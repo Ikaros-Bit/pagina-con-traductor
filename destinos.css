@@ -552,7 +552,7 @@ footer {
 }
 
 /* ========================================
-   BOTÓN DE IDIOMA - ES / EN (FUNCIONAL)
+   WIDGET DE GOOGLE TRANSLATE (ESTILIZADO)
    ======================================== */
 
 .footer-language {
@@ -562,85 +562,8 @@ footer {
     margin-top: 0.5rem;
 }
 
-/* Botón principal */
-.lang-toggle-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    padding: 8px 20px;
-    border-radius: 40px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    backdrop-filter: blur(4px);
-    letter-spacing: 0.3px;
-}
-
-.lang-toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.18);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.lang-toggle-btn:active {
-    transform: scale(0.95);
-}
-
-.lang-toggle-btn .lang-code {
-    font-weight: 700;
-    font-size: 1.1rem;
-    min-width: 28px;
-    text-align: center;
-}
-
-.lang-toggle-btn .lang-divider {
-    opacity: 0.3;
-    font-weight: 300;
-}
-
-.lang-toggle-btn .lang-name {
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-.lang-toggle-btn .lang-icon {
-    font-size: 1.3rem;
-    margin-left: 4px;
-    transition: transform 0.3s ease;
-}
-
-.lang-toggle-btn:hover .lang-icon {
-    transform: rotate(-10deg) scale(1.1);
-}
-
-/* Modo inglés */
-.lang-toggle-btn.english {
-    background: rgba(46, 204, 113, 0.15);
-    border-color: rgba(46, 204, 113, 0.4);
-}
-
-.lang-toggle-btn.english:hover {
-    background: rgba(46, 204, 113, 0.25);
-    border-color: rgba(46, 204, 113, 0.6);
-}
-
-.lang-toggle-btn.english .lang-code {
-    color: #2ecc71;
-}
-
-/* ========================================
-   WIDGET DE GOOGLE TRANSLATE (ESTILIZADO)
-   ======================================== */
-
 .translate-widget {
-    margin-top: 12px;
-    display: block;
+    display: inline-block;
     text-align: center;
 }
 
@@ -656,9 +579,9 @@ footer {
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
     border: 2px solid rgba(255, 255, 255, 0.2);
-    padding: 6px 14px;
+    padding: 8px 18px;
     border-radius: 30px;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -666,17 +589,18 @@ footer {
     outline: none;
     appearance: none;
     -webkit-appearance: none;
-    min-width: 140px;
+    min-width: 160px;
     text-align: center;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 32px;
+    background-position: right 16px center;
+    padding-right: 38px;
 }
 
 .translate-widget .goog-te-combo:hover {
     background-color: rgba(255, 255, 255, 0.18);
     border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.02);
 }
 
 .translate-widget .goog-te-combo:focus {
@@ -955,32 +879,13 @@ body {
         padding: 1.2rem 0 0.6rem 0;
     }
 
-    .lang-toggle-btn {
-        padding: 6px 16px;
-        font-size: 0.9rem;
-        gap: 6px;
-    }
-
-    .lang-toggle-btn .lang-code {
-        font-size: 1rem;
-        min-width: 24px;
-    }
-
-    .lang-toggle-btn .lang-name {
-        font-size: 0.85rem;
-    }
-
-    .lang-toggle-btn .lang-icon {
-        font-size: 1.1rem;
-    }
-
     .translate-widget .goog-te-combo {
-        padding: 5px 12px;
-        font-size: 0.8rem;
-        min-width: 120px;
-        padding-right: 28px;
-        background-size: 8px 5px;
-        background-position: right 10px center;
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        min-width: 140px;
+        padding-right: 34px;
+        background-size: 10px 7px;
+        background-position: right 12px center;
     }
 
     .entrevista-video-section {
@@ -1067,33 +972,13 @@ body {
         padding: 1rem 0 0.4rem 0;
     }
 
-    .lang-toggle-btn {
-        padding: 5px 12px;
-        font-size: 0.8rem;
-        gap: 4px;
-        border-width: 1.5px;
-    }
-
-    .lang-toggle-btn .lang-code {
-        font-size: 0.9rem;
-        min-width: 20px;
-    }
-
-    .lang-toggle-btn .lang-name {
-        font-size: 0.75rem;
-    }
-
-    .lang-toggle-btn .lang-icon {
-        font-size: 1rem;
-    }
-
     .translate-widget .goog-te-combo {
-        padding: 4px 10px;
-        font-size: 0.7rem;
-        min-width: 100px;
-        padding-right: 24px;
-        background-size: 7px 4px;
-        background-position: right 8px center;
+        padding: 5px 12px;
+        font-size: 0.75rem;
+        min-width: 120px;
+        padding-right: 30px;
+        background-size: 8px 5px;
+        background-position: right 10px center;
     }
 
     .entrevista-video-section {
