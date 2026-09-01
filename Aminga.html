@@ -221,10 +221,18 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
         </div>
 
         <!-- ============================================================ -->
-        <!-- TRADUCTOR DE GOOGLE - BOTÓN EN EL FOOTER                     -->
+        <!-- TRADUCTOR DE GOOGLE - DISEÑO MEJORADO                        -->
         <!-- ============================================================ -->
         <div class="footer-language">
-            <div id="google_translate_element"></div>
+            <!-- Selector de idioma (oculto inicialmente) -->
+            <div id="google_translate_element" class="translate-widget"></div>
+            
+            <!-- Botón principal de traducción -->
+            <button id="translateMainBtn" class="translate-main-btn">
+                <span class="material-symbols-outlined">language</span>
+                <span class="btn-text">🌐 Traducir página</span>
+                <span class="btn-arrow">▼</span>
+            </button>
         </div>
         <!-- ============================================================ -->
 
@@ -237,7 +245,7 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <!-- ============================================================ -->
-    <!-- GOOGLE TRANSLATE - SCRIPT                                    -->
+    <!-- GOOGLE TRANSLATE - SCRIPT DE CARGA                            -->
     <!-- ============================================================ -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
@@ -249,6 +257,75 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        // ============================================================
+        // CONTROL DEL BOTÓN DE TRADUCCIÓN - VERSIÓN MEJORADA
+        // ============================================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainBtn = document.getElementById('translateMainBtn');
+            const widget = document.getElementById('google_translate_element');
+            let widgetVisible = false;
+
+            // Función para mostrar/ocultar el selector de idioma
+            function toggleWidget(e) {
+                if (e) e.preventDefault();
+                
+                if (widgetVisible) {
+                    // Ocultar widget
+                    widget.classList.remove('show');
+                    widgetVisible = false;
+                    mainBtn.querySelector('.btn-text').textContent = '🌐 Traducir página';
+                    mainBtn.querySelector('.btn-arrow').textContent = '▼';
+                } else {
+                    // Mostrar widget
+                    widget.classList.add('show');
+                    widgetVisible = true;
+                    mainBtn.querySelector('.btn-text').textContent = '🔽 Cerrar traductor';
+                    mainBtn.querySelector('.btn-arrow').textContent = '▲';
+                    
+                    // Forzar que el combo de Google Translate sea visible
+                    setTimeout(function() {
+                        const combo = document.querySelector('.goog-te-combo');
+                        if (combo) {
+                            combo.style.display = 'block';
+                            combo.style.width = '100%';
+                            combo.focus();
+                        }
+                    }, 300);
+                }
+            }
+
+            // Evento del botón principal
+            mainBtn.addEventListener('click', toggleWidget);
+
+            // Cerrar el widget al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (widgetVisible) {
+                    const isClickInside = widget.contains(e.target) || mainBtn.contains(e.target);
+                    if (!isClickInside) {
+                        widget.classList.remove('show');
+                        widgetVisible = false;
+                        mainBtn.querySelector('.btn-text').textContent = '🌐 Traducir página';
+                        mainBtn.querySelector('.btn-arrow').textContent = '▼';
+                    }
+                }
+            });
+
+            // Detectar cuando el widget de Google Translate está listo
+            const observer = new MutationObserver(function() {
+                const combo = document.querySelector('.goog-te-combo');
+                if (combo) {
+                    // El widget está listo, ocultarlo inicialmente
+                    widget.classList.remove('show');
+                    observer.disconnect();
+                }
+            });
+
+            observer.observe(document.body, { childList: true, subtree: true });
+        });
+    </script>
     <!-- ============================================================ -->
 
     <!--Scripts-->
