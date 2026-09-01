@@ -221,7 +221,7 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
         </div>
 
         <!-- ============================================================ -->
-        <!-- BOTÓN DE IDIOMA - ES / EN                                    -->
+        <!-- BOTÓN DE IDIOMA - ES / EN (CON TRADUCCIÓN FUNCIONAL)         -->
         <!-- ============================================================ -->
         <div class="footer-language">
             <button id="langToggle" class="lang-toggle-btn">
@@ -230,8 +230,8 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
                 <span class="lang-name" id="langName">Español</span>
                 <span class="material-symbols-outlined lang-icon">translate</span>
             </button>
-            <!-- Widget oculto de Google Translate -->
-            <div id="google_translate_element" style="display:none;"></div>
+            <!-- Google Translate Widget (visible pero estilizado) -->
+            <div id="google_translate_element" class="translate-widget"></div>
         </div>
         <!-- ============================================================ -->
 
@@ -259,16 +259,16 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
 
     <script>
         // ============================================================
-        // CONTROL DEL BOTÓN DE IDIOMA - ES / EN
+        // CONTROL DEL BOTÓN DE IDIOMA - ES / EN (FUNCIONAL)
         // ============================================================
         
         document.addEventListener('DOMContentLoaded', function() {
             const langBtn = document.getElementById('langToggle');
             const langCode = document.getElementById('langCode');
             const langName = document.getElementById('langName');
-            let currentLang = 'es'; // 'es' o 'en'
+            let currentLang = 'es';
 
-            // Función para cambiar el idioma
+            // Función para cambiar el idioma usando el combo de Google Translate
             function setLanguage(lang) {
                 const combo = document.querySelector('.goog-te-combo');
                 if (!combo) {
@@ -278,7 +278,9 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
                     }, 500);
                     return;
                 }
+                // Cambiar el valor del combo
                 combo.value = lang;
+                // Disparar el evento 'change' para que Google Translate actúe
                 combo.dispatchEvent(new Event('change'));
                 currentLang = lang;
                 updateButton(lang);
@@ -304,7 +306,7 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
                 setLanguage(newLang);
             });
 
-            // Detectar el idioma actual cuando el combo cambie (por si el usuario usa el combo nativo)
+            // Detectar cambios en el combo de Google Translate (por si el usuario lo usa manualmente)
             const observer = new MutationObserver(function() {
                 const combo = document.querySelector('.goog-te-combo');
                 if (combo) {
