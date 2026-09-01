@@ -221,18 +221,17 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
         </div>
 
         <!-- ============================================================ -->
-        <!-- TRADUCTOR DE GOOGLE - DISEÑO MEJORADO                        -->
+        <!-- BOTÓN DE IDIOMA - ES / EN                                    -->
         <!-- ============================================================ -->
         <div class="footer-language">
-            <!-- Selector de idioma (oculto inicialmente) -->
-            <div id="google_translate_element" class="translate-widget"></div>
-            
-            <!-- Botón principal de traducción -->
-            <button id="translateMainBtn" class="translate-main-btn">
-                <span class="material-symbols-outlined">language</span>
-                <span class="btn-text">🌐 Traducir página</span>
-                <span class="btn-arrow">▼</span>
+            <button id="langToggle" class="lang-toggle-btn">
+                <span class="lang-code" id="langCode">ES</span>
+                <span class="lang-divider">|</span>
+                <span class="lang-name" id="langName">Español</span>
+                <span class="material-symbols-outlined lang-icon">translate</span>
             </button>
+            <!-- Widget oculto de Google Translate -->
+            <div id="google_translate_element" style="display:none;"></div>
         </div>
         <!-- ============================================================ -->
 
@@ -260,65 +259,64 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
 
     <script>
         // ============================================================
-        // CONTROL DEL BOTÓN DE TRADUCCIÓN - VERSIÓN MEJORADA
+        // CONTROL DEL BOTÓN DE IDIOMA - ES / EN
         // ============================================================
         
         document.addEventListener('DOMContentLoaded', function() {
-            const mainBtn = document.getElementById('translateMainBtn');
-            const widget = document.getElementById('google_translate_element');
-            let widgetVisible = false;
+            const langBtn = document.getElementById('langToggle');
+            const langCode = document.getElementById('langCode');
+            const langName = document.getElementById('langName');
+            let currentLang = 'es'; // 'es' o 'en'
 
-            // Función para mostrar/ocultar el selector de idioma
-            function toggleWidget(e) {
-                if (e) e.preventDefault();
-                
-                if (widgetVisible) {
-                    // Ocultar widget
-                    widget.classList.remove('show');
-                    widgetVisible = false;
-                    mainBtn.querySelector('.btn-text').textContent = '🌐 Traducir página';
-                    mainBtn.querySelector('.btn-arrow').textContent = '▼';
-                } else {
-                    // Mostrar widget
-                    widget.classList.add('show');
-                    widgetVisible = true;
-                    mainBtn.querySelector('.btn-text').textContent = '🔽 Cerrar traductor';
-                    mainBtn.querySelector('.btn-arrow').textContent = '▲';
-                    
-                    // Forzar que el combo de Google Translate sea visible
+            // Función para cambiar el idioma
+            function setLanguage(lang) {
+                const combo = document.querySelector('.goog-te-combo');
+                if (!combo) {
+                    // Si el combo no está disponible, reintentar después de 500ms
                     setTimeout(function() {
-                        const combo = document.querySelector('.goog-te-combo');
-                        if (combo) {
-                            combo.style.display = 'block';
-                            combo.style.width = '100%';
-                            combo.focus();
-                        }
-                    }, 300);
+                        setLanguage(lang);
+                    }, 500);
+                    return;
+                }
+                combo.value = lang;
+                combo.dispatchEvent(new Event('change'));
+                currentLang = lang;
+                updateButton(lang);
+            }
+
+            // Función para actualizar el botón según el idioma
+            function updateButton(lang) {
+                if (lang === 'en') {
+                    langCode.textContent = 'EN';
+                    langName.textContent = 'English';
+                    langBtn.classList.add('english');
+                } else {
+                    langCode.textContent = 'ES';
+                    langName.textContent = 'Español';
+                    langBtn.classList.remove('english');
                 }
             }
 
-            // Evento del botón principal
-            mainBtn.addEventListener('click', toggleWidget);
-
-            // Cerrar el widget al hacer clic fuera
-            document.addEventListener('click', function(e) {
-                if (widgetVisible) {
-                    const isClickInside = widget.contains(e.target) || mainBtn.contains(e.target);
-                    if (!isClickInside) {
-                        widget.classList.remove('show');
-                        widgetVisible = false;
-                        mainBtn.querySelector('.btn-text').textContent = '🌐 Traducir página';
-                        mainBtn.querySelector('.btn-arrow').textContent = '▼';
-                    }
-                }
+            // Evento click del botón
+            langBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const newLang = (currentLang === 'es') ? 'en' : 'es';
+                setLanguage(newLang);
             });
 
-            // Detectar cuando el widget de Google Translate está listo
+            // Detectar el idioma actual cuando el combo cambie (por si el usuario usa el combo nativo)
             const observer = new MutationObserver(function() {
                 const combo = document.querySelector('.goog-te-combo');
                 if (combo) {
-                    // El widget está listo, ocultarlo inicialmente
-                    widget.classList.remove('show');
+                    // Inicializar con el valor actual del combo
+                    currentLang = combo.value || 'es';
+                    updateButton(currentLang);
+                    
+                    // Escuchar cambios en el combo
+                    combo.addEventListener('change', function() {
+                        currentLang = this.value;
+                        updateButton(currentLang);
+                    });
                     observer.disconnect();
                 }
             });
