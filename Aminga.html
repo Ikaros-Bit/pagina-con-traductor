@@ -221,16 +221,9 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
         </div>
 
         <!-- ============================================================ -->
-        <!-- BOTÓN DE IDIOMA - ES / EN (CON TRADUCCIÓN FUNCIONAL)         -->
+        <!-- WIDGET DE GOOGLE TRANSLATE - ESTILIZADO Y FUNCIONAL          -->
         <!-- ============================================================ -->
         <div class="footer-language">
-            <button id="langToggle" class="lang-toggle-btn">
-                <span class="lang-code" id="langCode">ES</span>
-                <span class="lang-divider">|</span>
-                <span class="lang-name" id="langName">Español</span>
-                <span class="material-symbols-outlined lang-icon">translate</span>
-            </button>
-            <!-- Google Translate Widget (visible pero estilizado) -->
             <div id="google_translate_element" class="translate-widget"></div>
         </div>
         <!-- ============================================================ -->
@@ -256,76 +249,6 @@ Aminga combina historia, cultura, naturaleza y tradición vitivinícola en un en
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <script>
-        // ============================================================
-        // CONTROL DEL BOTÓN DE IDIOMA - ES / EN (FUNCIONAL)
-        // ============================================================
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const langBtn = document.getElementById('langToggle');
-            const langCode = document.getElementById('langCode');
-            const langName = document.getElementById('langName');
-            let currentLang = 'es';
-
-            // Función para cambiar el idioma usando el combo de Google Translate
-            function setLanguage(lang) {
-                const combo = document.querySelector('.goog-te-combo');
-                if (!combo) {
-                    // Si el combo no está disponible, reintentar después de 500ms
-                    setTimeout(function() {
-                        setLanguage(lang);
-                    }, 500);
-                    return;
-                }
-                // Cambiar el valor del combo
-                combo.value = lang;
-                // Disparar el evento 'change' para que Google Translate actúe
-                combo.dispatchEvent(new Event('change'));
-                currentLang = lang;
-                updateButton(lang);
-            }
-
-            // Función para actualizar el botón según el idioma
-            function updateButton(lang) {
-                if (lang === 'en') {
-                    langCode.textContent = 'EN';
-                    langName.textContent = 'English';
-                    langBtn.classList.add('english');
-                } else {
-                    langCode.textContent = 'ES';
-                    langName.textContent = 'Español';
-                    langBtn.classList.remove('english');
-                }
-            }
-
-            // Evento click del botón
-            langBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const newLang = (currentLang === 'es') ? 'en' : 'es';
-                setLanguage(newLang);
-            });
-
-            // Detectar cambios en el combo de Google Translate (por si el usuario lo usa manualmente)
-            const observer = new MutationObserver(function() {
-                const combo = document.querySelector('.goog-te-combo');
-                if (combo) {
-                    // Inicializar con el valor actual del combo
-                    currentLang = combo.value || 'es';
-                    updateButton(currentLang);
-                    
-                    // Escuchar cambios en el combo
-                    combo.addEventListener('change', function() {
-                        currentLang = this.value;
-                        updateButton(currentLang);
-                    });
-                    observer.disconnect();
-                }
-            });
-
-            observer.observe(document.body, { childList: true, subtree: true });
-        });
-    </script>
     <!-- ============================================================ -->
 
     <!--Scripts-->
