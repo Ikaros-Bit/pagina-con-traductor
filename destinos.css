@@ -26,6 +26,8 @@ body {
     background-color: var(--color-bg-primary);
     color: #333;
     line-height: 1.6;
+    top: 0 !important;
+    position: relative;
 }
 
 /* HEADER */
@@ -552,7 +554,7 @@ footer {
 }
 
 /* ========================================
-   WIDGET DE GOOGLE TRANSLATE (ESTILIZADO)
+   WIDGET DE GOOGLE TRANSLATE
    ======================================== */
 
 .footer-language {
@@ -565,6 +567,7 @@ footer {
 .translate-widget {
     display: inline-block;
     text-align: center;
+    max-width: 100%;
 }
 
 .translate-widget .goog-te-gadget {
@@ -574,7 +577,6 @@ footer {
     display: inline-block;
 }
 
-/* Estilizar el combo de idioma */
 .translate-widget .goog-te-combo {
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
@@ -595,6 +597,7 @@ footer {
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 38px;
+    max-width: 100%;
 }
 
 .translate-widget .goog-te-combo:hover {
@@ -614,7 +617,6 @@ footer {
     padding: 8px;
 }
 
-/* Ocultar el texto "Traducir" y el enlace de Google */
 .translate-widget .goog-te-gadget span {
     display: none !important;
 }
@@ -623,13 +625,71 @@ footer {
     display: none !important;
 }
 
-/* Ocultar el banner de Google Translate */
+/* ========================================
+   BOTÓN PARA CERRAR LA TRADUCCIÓN
+   ======================================== */
+
+.close-translate-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(255, 59, 48, 0.15);
+    color: #ff3b30;
+    border: 2px solid rgba(255, 59, 48, 0.3);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 8px auto 0 auto;
+}
+
+.close-translate-btn:hover {
+    background: rgba(255, 59, 48, 0.25);
+    border-color: rgba(255, 59, 48, 0.5);
+    transform: scale(1.02);
+}
+
+.close-translate-btn:active {
+    transform: scale(0.95);
+}
+
+.close-translate-btn .material-symbols-outlined {
+    font-size: 1.1rem;
+}
+
+.close-translate-btn.visible {
+    display: inline-flex;
+}
+
+/* ========================================
+   OCULTAR EL BANNER SUPERIOR DE GOOGLE TRANSLATE
+   ======================================== */
 .goog-te-banner-frame {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
 }
 
 body {
     top: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+iframe.goog-te-banner-frame {
+    display: none !important;
+    height: 0 !important;
+}
+
+html {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 
 /* ENTREVISTA EN VIDEO */
@@ -888,6 +948,16 @@ body {
         background-position: right 12px center;
     }
 
+    .close-translate-btn {
+        padding: 5px 12px;
+        font-size: 0.75rem;
+        gap: 4px;
+    }
+    
+    .close-translate-btn .material-symbols-outlined {
+        font-size: 0.9rem;
+    }
+
     .entrevista-video-section {
         padding: 1.5rem 0.8rem;
         margin: 1.5rem auto;
@@ -979,6 +1049,11 @@ body {
         padding-right: 30px;
         background-size: 8px 5px;
         background-position: right 10px center;
+    }
+
+    .close-translate-btn {
+        padding: 4px 10px;
+        font-size: 0.7rem;
     }
 
     .entrevista-video-section {
