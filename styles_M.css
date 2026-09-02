@@ -388,7 +388,7 @@ footer {
 }
 
 /* ==============================================================
-   GOOGLE TRANSLATE - ESTILOS IGUAL QUE EN AMINGA
+   GOOGLE TRANSLATE - ESTILOS MEJORADOS (selector anclado)
    ============================================================== */
 
 .footer-language {
@@ -396,6 +396,7 @@ footer {
     padding: 1.5rem 0 0.8rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     margin-top: 0.5rem;
+    position: relative; /* Contenedor de referencia para el dropdown */
 }
 
 .translate-widget {
@@ -403,6 +404,7 @@ footer {
     text-align: center;
     max-width: 100%;
     width: 100%;
+    position: relative; /* Para que el dropdown se posicione relativo a este contenedor */
 }
 
 .translate-widget .goog-te-gadget {
@@ -471,6 +473,50 @@ footer {
     color: white !important;
     padding: 10px !important;
     font-size: 1rem !important;
+}
+
+/* ==============================================================
+   ESTILOS PARA EL MENÚ DESPLEGABLE DE GOOGLE TRANSLATE
+   (para que aparezca anclado al selector y no flote)
+   ============================================================== */
+
+/* El iframe del menú desplegable */
+.goog-te-menu-frame {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 9999 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    margin-top: 5px !important;
+    min-width: 200px !important;
+}
+
+/* El contenido del menú (para quitar bordes y ajustar colores) */
+.goog-te-menu2 {
+    background: #2c3e50 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 5px 0 !important;
+}
+
+.goog-te-menu2-item {
+    padding: 0 !important;
+}
+
+.goog-te-menu2-item a {
+    color: #fff !important;
+    padding: 8px 15px !important;
+    display: block !important;
+    font-size: 0.95rem !important;
+    transition: background 0.2s !important;
+}
+
+.goog-te-menu2-item a:hover {
+    background: rgba(255,255,255,0.1) !important;
+    text-decoration: none !important;
 }
 
 /* Ocultar el banner superior de Google Translate */
@@ -652,6 +698,15 @@ body {
         background-size: 12px 7px !important;
         background-position: right 14px center !important;
         max-width: 280px !important;
+    }
+
+    /* Ajustar el menú desplegable en móviles */
+    .goog-te-menu-frame {
+        left: 0 !important;
+        transform: none !important;
+        min-width: 100% !important;
+        width: 100% !important;
+        margin-top: 5px !important;
     }
 }
 
