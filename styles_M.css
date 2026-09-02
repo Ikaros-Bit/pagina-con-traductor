@@ -399,7 +399,7 @@ footer {
 }
 
 .translate-widget {
-    display: inline-block;
+    display: inline-block !important;  /* Asegura que sea visible */
     text-align: center;
     max-width: 100%;
     width: 100%;
@@ -425,7 +425,7 @@ footer {
     opacity: 0 !important;
 }
 
-/* El combo de idioma (selector) - ESTILO COMPLETO COMO EN AMINGA */
+/* El combo de idioma (selector) */
 .translate-widget .goog-te-combo {
     background: rgba(255, 255, 255, 0.1) !important;
     color: #fff !important;
@@ -500,146 +500,6 @@ body {
 
 /* Responsive del traductor en móviles */
 @media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-    }
-
-    .logo {
-        width: 100px;
-        height: 100px;
-        margin: auto;
-    }
-
-    .header-title h1 {
-        font-size: 1.5rem;
-    }
-
-    .menu-toggle {
-        display: flex;
-        position: absolute;
-        top: 3rem;
-        right: 1.5rem;
-        z-index: 10;
-    }
-
-    #nav-menu {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-    }
-
-    #nav-menu li {
-        width: 100%;
-        text-align: center;
-    }
-
-    #nav-menu li a {
-        width: 100%;
-        padding: 1rem;
-        text-align: center;
-        margin: 0 auto;
-    }
-
-    #nav-menu #divisor {
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-        border-top: 1px solid rgba(255,255,255,0.2);
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: var(--color-bg-submenu);
-    }
-
-    #nav-menu.active {
-        display: flex;
-    }
-
-    .dropdown > a::after {
-        float: right;
-        transition: transform 0.3s;
-    }
-
-    .dropdown.active > a::after {
-        transform: rotate(180deg);
-    }
-
-    .dropdown-content {
-        position: static;
-        display: none;
-        width: 100%;
-        box-shadow: none;
-        background-color: var(--color-bg-submenu);
-        flex-direction: column;
-        align-items: center;
-        transform: translateX(0%);
-        min-width: 0;
-        grid-template-columns: 1fr;
-    }
-
-    .dropdown-content li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .dropdown-content li a {
-        width: 100%;
-        padding: 0.8rem;
-        text-align: center;
-    }
-
-    .dropdown.active .dropdown-content {
-        display: flex;
-    }
-
-    .hero {
-        height: 400px;
-        padding: 1.5rem;
-    }
-
-    .hero h2 {
-        font-size: 2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .destinos {
-        padding: 2rem 1rem;
-    }
-
-    .destinos h2 {
-        font-size: 2rem;
-    }
-
-    .grid-destinos {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .footer-banner {
-        min-height: 150px;
-        padding: 0.5rem;
-    }
-
-    .footer-banner img {
-        max-height: 200px;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-    }
-
-    .social-links a {
-        display: inline-block;
-        margin: 0.5rem;
-    }
-
     .footer-language {
         padding: 1.2rem 0 0.6rem 0;
     }
@@ -656,47 +516,6 @@ body {
 }
 
 @media (max-width: 480px) {
-    .logo {
-        width: 90px;
-        height: 90px;
-    }
-
-    .header-title h1 {
-        font-size: 1.3rem;
-    }
-
-    .header-title p {
-        font-size: 0.8rem;
-    }
-
-    .hero {
-        height: 350px;
-    }
-
-    .hero h2 {
-        font-size: 1.8rem;
-    }
-
-    .btn {
-        padding: 0.7rem 1.5rem;
-    }
-
-    .card-content {
-        padding: 1rem;
-    }
-
-    .card h3 {
-        font-size: 1.3rem;
-    }
-
-    .footer-banner {
-        min-height: 120px;
-    }
-
-    .footer-banner img {
-        max-height: 150px;
-    }
-
     .footer-language {
         padding: 1rem 0 0.4rem 0;
     }
