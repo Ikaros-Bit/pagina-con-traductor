@@ -125,10 +125,10 @@
         </div>
 
         <!-- ========================================================= -->
-        <!-- TRADUCTOR DE GOOGLE - VERSIÓN SIMPLE                      -->
+        <!-- TRADUCTOR DE GOOGLE - IGUAL QUE EN AMINGA                 -->
         <!-- ========================================================= -->
         <div class="footer-language">
-            <div id="google_translate_element"></div>
+            <div id="google_translate_element" class="translate-widget"></div>
         </div>
         <!-- ========================================================= -->
 
@@ -154,21 +154,18 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- Script para ocultar el texto "Seleccionar idioma" y estilizar el combo -->
+    <!-- Script para evitar el scroll al hacer clic en el combo y ocultar "Seleccionar idioma" -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Estilizar el combo después de que cargue
-            function styleTranslate() {
+            // Función para corregir el combo
+            function fixCombo() {
                 var combo = document.querySelector('.goog-te-combo');
                 if (combo) {
-                    // Añadir clase para estilos CSS
-                    combo.classList.add('translate-combo');
-                    // Si la primera opción es "Seleccionar idioma", cambiarla
-                    var options = combo.querySelectorAll('option');
-                    if (options.length > 0 && options[0].text === 'Seleccionar idioma') {
-                        options[0].text = 'Español';
-                    }
-                    // Si el valor está vacío, seleccionar español
+                    // Evitar que el combo cause scroll al hacer clic
+                    combo.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                    });
+                    // Forzar que el valor sea 'es' si está vacío o es "Seleccionar idioma"
                     if (combo.value === '' || combo.value === 'es') {
                         combo.value = 'es';
                         var event = new Event('change', { bubbles: true });
@@ -179,17 +176,18 @@
                 return false;
             }
 
-            // Intentar varias veces
+            // Intentar varias veces porque el widget puede cargar después
             var attempts = 0;
-            var maxAttempts = 15;
+            var maxAttempts = 10;
             var interval = setInterval(function() {
                 attempts++;
-                if (styleTranslate() || attempts >= maxAttempts) {
+                if (fixCombo() || attempts >= maxAttempts) {
                     clearInterval(interval);
                 }
             }, 500);
         });
     </script>
+    <!-- ========================================================= -->
 
     <!-- Script principal -->
     <script src="main.js"></script>
