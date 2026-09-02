@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explora La Costa - Turismo</title>
     <link rel="stylesheet" href="styles_M.css">
-    <!-- Google Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo">
@@ -27,7 +25,6 @@
         </div>
     </header>
     
-    <!-- Navegación -->
     <nav>
         <ul id="nav-menu">
             <li><a href="index.html">Inicio</a></li>
@@ -83,7 +80,7 @@
                 <img src="https://www.lanacion.com.ar/resizer/v2/el-castillo-de-dionisio-se-ubica-en-santa-vera-UNJRGTKGJNERHEIC3ERFVC5DAQ.png?auth=1e7b7cd0f256b16a134c5274e5875a41b81c8e3ca26ba9472c8c434bebf96925&width=880&height=586&quality=70&smart=true" alt="Santa Cruz">
                 <div class="card-content">
                     <h3>Santa Vera Cruz, La Rioja</h3>
-                    <p>Santa Vera Cruz es una apacible localidad situada en el Departamento Castro Barros, al norte de la provincia de La Rioja, Argentina. Rodeada por paisajes serranos, se encuentra próxima to San Pedro y al límite con el Departamento Arauco.</p>
+                    <p>Santa Vera Cruz es una apacible localidad situada en el Departamento Castro Barros, al norte de la provincia de La Rioja, Argentina. Rodeada por paisajes serranos, se encuentra próxima a San Pedro y al límite con el Departamento Arauco.</p>
                     <br>
                     <a href="Santa Vera Cruz.html" class="btn">Explorar</a>
                 </div>
@@ -91,7 +88,6 @@
         </div>
     </section>
     
-    <!-- Footer -->
     <footer>
         <div class="footer-banner">
             <img src="https://images2.imgbox.com/52/15/M0vxJb6k_o.png" alt="Banner promocional de La Costa Riojana">
@@ -118,26 +114,23 @@
                 <p>paseocarlossaulmenem@gmail.com</p>
             </div>
         </div>
-
+        
         <!-- ========================================================= -->
-        <!-- TRADUCTOR DE GOOGLE (contenedor)                          -->
+        <!-- TRADUCTOR: contenedor justo después del correo             -->
         <!-- ========================================================= -->
         <div class="footer-language">
             <div id="google_translate_element" class="translate-widget"></div>
         </div>
         <!-- ========================================================= -->
-
+        
         <div class="footer-bottom">
             <p>&copy; 2025 Turismo La Costa Riojana - Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Font para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-    <!-- ========================================================= -->
-    <!-- SCRIPTS DE GOOGLE TRANSLATE                                -->
-    <!-- ========================================================= -->
+    <!-- Google Translate API -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -149,10 +142,9 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- Script para ajustar el selector y evitar texto "Seleccionar idioma" -->
+    <!-- Ajuste para eliminar "Seleccionar idioma" y forzar español -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Forzar que el combo muestre "Español" en lugar de "Seleccionar idioma"
             function fixCombo() {
                 var combo = document.querySelector('.goog-te-combo');
                 if (combo) {
@@ -160,7 +152,6 @@
                         combo.value = 'es';
                         combo.dispatchEvent(new Event('change', { bubbles: true }));
                     }
-                    // Cambiar el texto de la primera opción si es "Seleccionar idioma"
                     var options = combo.querySelectorAll('option');
                     if (options.length > 0 && options[0].text === 'Seleccionar idioma') {
                         options[0].text = 'Español';
@@ -169,8 +160,6 @@
                 }
                 return false;
             }
-
-            // Intentar varias veces porque el widget tarda en cargar
             var attempts = 0;
             var interval = setInterval(function() {
                 attempts++;
@@ -180,9 +169,7 @@
             }, 500);
         });
     </script>
-    <!-- ========================================================= -->
 
-    <!-- Script principal -->
     <script src="main.js"></script>
 </body>
 </html>
