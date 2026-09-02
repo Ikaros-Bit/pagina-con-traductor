@@ -97,13 +97,10 @@
             <img src="https://images2.imgbox.com/52/15/M0vxJb6k_o.png" alt="Banner promocional de La Costa Riojana">
         </div>
         <div class="footer-container">
-            <!-- Columna 1 -->
             <div class="footer-col">
                 <h3>Turismo La Costa Riojana</h3>
                 <p>Descubre la belleza natural, cultural e histórica de Castro Barros, La Rioja.</p>
             </div>
-
-            <!-- Columna 2 -->
             <div class="footer-col">
                 <h3>Enlaces</h3>
                 <ul>
@@ -112,8 +109,6 @@
                     <li><a href="Guía de Servicios.html">Guía de Servicios</a></li>
                 </ul>
             </div>
-
-            <!-- Columna 3 -->
             <div class="footer-col">
                 <h3>Contacto</h3>
                 <div class="social-links">
@@ -125,7 +120,7 @@
         </div>
 
         <!-- ========================================================= -->
-        <!-- TRADUCTOR DE GOOGLE - IGUAL QUE EN AMINGA                 -->
+        <!-- TRADUCTOR DE GOOGLE - CONTENEDOR CON POSICIONAMIENTO      -->
         <!-- ========================================================= -->
         <div class="footer-language">
             <div id="google_translate_element" class="translate-widget"></div>
@@ -154,37 +149,49 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- Script para evitar el scroll al hacer clic en el combo y ocultar "Seleccionar idioma" -->
+    <!-- Script para mejorar el comportamiento del selector -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Función para corregir el combo
-            function fixCombo() {
+            // Función para forzar que el combo muestre "Español" como opción seleccionada
+            function fixTranslateCombo() {
                 var combo = document.querySelector('.goog-te-combo');
                 if (combo) {
-                    // Evitar que el combo cause scroll al hacer clic
-                    combo.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                    });
-                    // Forzar que el valor sea 'es' si está vacío o es "Seleccionar idioma"
                     if (combo.value === '' || combo.value === 'es') {
                         combo.value = 'es';
                         var event = new Event('change', { bubbles: true });
                         combo.dispatchEvent(event);
+                    }
+                    var options = combo.querySelectorAll('option');
+                    if (options.length > 0 && options[0].text === 'Seleccionar idioma') {
+                        options[0].text = 'Español';
                     }
                     return true;
                 }
                 return false;
             }
 
-            // Intentar varias veces porque el widget puede cargar después
             var attempts = 0;
             var maxAttempts = 10;
             var interval = setInterval(function() {
                 attempts++;
-                if (fixCombo() || attempts >= maxAttempts) {
+                if (fixTranslateCombo() || attempts >= maxAttempts) {
                     clearInterval(interval);
                 }
             }, 500);
+
+            // Evitar que el foco en el combo cause scroll
+            var combo = document.querySelector('.goog-te-combo');
+            if (combo) {
+                combo.addEventListener('focus', function(e) {
+                    // No hacer scroll al enfocar
+                    e.preventDefault();
+                });
+                // También prevenir el scroll al abrir el dropdown (si es posible)
+                combo.addEventListener('mousedown', function(e) {
+                    // No prevenir el evento por defecto porque rompe el dropdown
+                    // pero podemos intentar mantener la posición
+                });
+            }
         });
     </script>
     <!-- ========================================================= -->
