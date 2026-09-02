@@ -32,7 +32,7 @@ body {
     background-color: var(--color-bg-primary);
     color: #333;
     line-height: 1.6;
-    top: 0 !important;  /* Evita que Google Translate mueva el body */
+    top: 0 !important;
     margin-top: 0 !important;
     padding-top: 0 !important;
 }
@@ -414,7 +414,7 @@ footer {
 }
 
 /* ==============================================================
-   NUEVO: WIDGET DE GOOGLE TRANSLATE (ESTILOS Y RESPONSIVE)
+   WIDGET DE GOOGLE TRANSLATE (IGUAL QUE EN AMINGA)
    ============================================================== */
 
 .footer-language {
@@ -439,57 +439,64 @@ footer {
     width: 100%;
 }
 
-/* El combo de idioma (selector) */
+/* Ocultar TODO el texto y enlaces que Google Translate genera */
+.translate-widget .goog-te-gadget span,
+.translate-widget .goog-te-gadget div,
+.translate-widget .goog-te-gadget a {
+    display: none !important;
+    font-size: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+/* El combo de idioma (selector) - IGUAL QUE EN AMINGA */
 .translate-widget .goog-te-combo {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    padding: 12px 20px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    min-width: 180px;
-    width: 100%;
-    max-width: 320px;
-    text-align: center;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 18px center;
-    padding-right: 44px;
-    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+    border: 2px solid rgba(255, 255, 255, 0.25) !important;
+    padding: 12px 20px !important;
+    border-radius: 50px !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    outline: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    min-width: 180px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    text-align: center !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 18px center !important;
+    padding-right: 44px !important;
+    margin: 0 auto !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
 }
 
 .translate-widget .goog-te-combo:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
     transform: scale(1.02);
 }
 
 .translate-widget .goog-te-combo:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+    border-color: #3498db !important;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3) !important;
 }
 
 .translate-widget .goog-te-combo option {
-    background: #2c3e50;
-    color: white;
-    padding: 10px;
-    font-size: 1rem;
-}
-
-/* Ocultar el texto "Traducir" y el enlace de Google */
-.translate-widget .goog-te-gadget span {
-    display: none !important;
-}
-
-.translate-widget .goog-te-gadget a {
-    display: none !important;
+    background: #2c3e50 !important;
+    color: white !important;
+    padding: 10px !important;
+    font-size: 1rem !important;
 }
 
 /* Ocultar el banner superior de Google Translate */
@@ -517,7 +524,7 @@ body {
     padding-top: 0 !important;
 }
 
-/* Responsive del traductor en móviles */
+/* Responsive del traductor en móviles - IGUAL QUE EN AMINGA */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -665,13 +672,13 @@ body {
     }
 
     .translate-widget .goog-te-combo {
-        padding: 12px 18px;
-        font-size: 1rem;
-        min-width: 160px;
-        padding-right: 40px;
-        background-size: 12px 7px;
-        background-position: right 14px center;
-        max-width: 280px;
+        padding: 12px 18px !important;
+        font-size: 1rem !important;
+        min-width: 160px !important;
+        padding-right: 40px !important;
+        background-size: 12px 7px !important;
+        background-position: right 14px center !important;
+        max-width: 280px !important;
     }
 }
 
@@ -722,12 +729,12 @@ body {
     }
 
     .translate-widget .goog-te-combo {
-        padding: 10px 14px;
-        font-size: 0.95rem;
-        min-width: 140px;
-        padding-right: 36px;
-        background-size: 10px 6px;
-        background-position: right 12px center;
-        max-width: 240px;
+        padding: 10px 14px !important;
+        font-size: 0.95rem !important;
+        min-width: 140px !important;
+        padding-right: 36px !important;
+        background-size: 10px 6px !important;
+        background-position: right 12px center !important;
+        max-width: 240px !important;
     }
 }
