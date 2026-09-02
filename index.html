@@ -120,7 +120,7 @@
         </div>
 
         <!-- ========================================================= -->
-        <!-- TRADUCTOR DE GOOGLE - CONTENEDOR CON POSICIONAMIENTO      -->
+        <!-- TRADUCTOR DE GOOGLE (contenedor)                          -->
         <!-- ========================================================= -->
         <div class="footer-language">
             <div id="google_translate_element" class="translate-widget"></div>
@@ -136,7 +136,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <!-- ========================================================= -->
-    <!-- SCRIPTS DE GOOGLE TRANSLATE (con https)                    -->
+    <!-- SCRIPTS DE GOOGLE TRANSLATE                                -->
     <!-- ========================================================= -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
@@ -149,18 +149,18 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- Script para mejorar el comportamiento del selector -->
+    <!-- Script para ajustar el selector y evitar texto "Seleccionar idioma" -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Función para forzar que el combo muestre "Español" como opción seleccionada
-            function fixTranslateCombo() {
+            // Forzar que el combo muestre "Español" en lugar de "Seleccionar idioma"
+            function fixCombo() {
                 var combo = document.querySelector('.goog-te-combo');
                 if (combo) {
                     if (combo.value === '' || combo.value === 'es') {
                         combo.value = 'es';
-                        var event = new Event('change', { bubbles: true });
-                        combo.dispatchEvent(event);
+                        combo.dispatchEvent(new Event('change', { bubbles: true }));
                     }
+                    // Cambiar el texto de la primera opción si es "Seleccionar idioma"
                     var options = combo.querySelectorAll('option');
                     if (options.length > 0 && options[0].text === 'Seleccionar idioma') {
                         options[0].text = 'Español';
@@ -170,28 +170,14 @@
                 return false;
             }
 
+            // Intentar varias veces porque el widget tarda en cargar
             var attempts = 0;
-            var maxAttempts = 10;
             var interval = setInterval(function() {
                 attempts++;
-                if (fixTranslateCombo() || attempts >= maxAttempts) {
+                if (fixCombo() || attempts > 15) {
                     clearInterval(interval);
                 }
             }, 500);
-
-            // Evitar que el foco en el combo cause scroll
-            var combo = document.querySelector('.goog-te-combo');
-            if (combo) {
-                combo.addEventListener('focus', function(e) {
-                    // No hacer scroll al enfocar
-                    e.preventDefault();
-                });
-                // También prevenir el scroll al abrir el dropdown (si es posible)
-                combo.addEventListener('mousedown', function(e) {
-                    // No prevenir el evento por defecto porque rompe el dropdown
-                    // pero podemos intentar mantener la posición
-                });
-            }
         });
     </script>
     <!-- ========================================================= -->
