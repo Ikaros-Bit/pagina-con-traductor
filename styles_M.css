@@ -31,6 +31,7 @@ body {
     padding-top: 0 !important;
 }
 
+/* HEADER */
 .header-container {
     background: var(--color-bg-sidebar);
     color: var(--color-text-secondary);
@@ -91,6 +92,7 @@ body {
     transition: all 0.3s;
 }
 
+/* NAVEGACIÓN */
 nav {
     background-color: var(--color-bg-menu);
     position: relative;
@@ -181,6 +183,7 @@ nav ul li a:hover {
     font-size: 0.7em;
 }
 
+/* HERO */
 .hero {
     height: 500px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://upload.wikimedia.org/wikipedia/commons/6/65/Departamento_de_Castro_Barros%2C_La_Rioja_55.jpg');
@@ -287,6 +290,7 @@ nav ul li a:hover {
     text-align: justify;
 }
 
+/* FOOTER */
 .footer-banner {
     text-align: center;
     display: flex;
@@ -384,7 +388,7 @@ footer {
 }
 
 /* ==============================================================
-   GOOGLE TRANSLATE - ESTILOS SIMPLIFICADOS Y FUNCIONALES
+   GOOGLE TRANSLATE - ESTILOS IGUAL QUE EN AMINGA
    ============================================================== */
 
 .footer-language {
@@ -394,15 +398,14 @@ footer {
     margin-top: 0.5rem;
 }
 
-#google_translate_element {
+.translate-widget {
     display: inline-block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    text-align: center;
+    max-width: 100%;
     width: 100%;
-    max-width: 400px;
 }
 
-#google_translate_element .goog-te-gadget {
+.translate-widget .goog-te-gadget {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
     font-size: 0px !important;
     color: #ccc !important;
@@ -410,10 +413,10 @@ footer {
     width: 100%;
 }
 
-/* Ocultar texto y enlaces extra de Google */
-#google_translate_element .goog-te-gadget span,
-#google_translate_element .goog-te-gadget div,
-#google_translate_element .goog-te-gadget a {
+/* Ocultar TODO el texto y enlaces que Google Translate genera */
+.translate-widget .goog-te-gadget span,
+.translate-widget .goog-te-gadget div,
+.translate-widget .goog-te-gadget a {
     display: none !important;
     font-size: 0 !important;
     height: 0 !important;
@@ -422,8 +425,8 @@ footer {
     opacity: 0 !important;
 }
 
-/* El combo de idioma */
-#google_translate_element .goog-te-combo {
+/* El combo de idioma (selector) - ESTILO COMPLETO COMO EN AMINGA */
+.translate-widget .goog-te-combo {
     background: rgba(255, 255, 255, 0.1) !important;
     color: #fff !important;
     border: 2px solid rgba(255, 255, 255, 0.25) !important;
@@ -447,27 +450,30 @@ footer {
     padding-right: 44px !important;
     margin: 0 auto !important;
     display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
 }
 
-#google_translate_element .goog-te-combo:hover {
+.translate-widget .goog-te-combo:hover {
     background-color: rgba(255, 255, 255, 0.2) !important;
     border-color: rgba(255, 255, 255, 0.5) !important;
     transform: scale(1.02);
 }
 
-#google_translate_element .goog-te-combo:focus {
+.translate-widget .goog-te-combo:focus {
     border-color: #3498db !important;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3) !important;
 }
 
-#google_translate_element .goog-te-combo option {
+.translate-widget .goog-te-combo option {
     background: #2c3e50 !important;
     color: white !important;
     padding: 10px !important;
     font-size: 1rem !important;
 }
 
-/* Ocultar banner superior de Google Translate */
+/* Ocultar el banner superior de Google Translate */
 .goog-te-banner-frame {
     display: none !important;
     visibility: hidden !important;
@@ -490,4 +496,232 @@ body {
     top: 0 !important;
     margin-top: 0 !important;
     padding-top: 0 !important;
+}
+
+/* Asegurar que el widget no flote y se mantenga en el footer */
+#google_translate_element {
+    position: static !important;
+    display: inline-block !important;
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    float: none !important;
+    clear: both !important;
+}
+
+/* Responsive del traductor en móviles */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
+
+    .header-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: absolute;
+        top: 3rem;
+        right: 1.5rem;
+        z-index: 10;
+    }
+
+    #nav-menu {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+    }
+
+    #nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    #nav-menu li a {
+        width: 100%;
+        padding: 1rem;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    #nav-menu #divisor {
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--color-bg-submenu);
+    }
+
+    #nav-menu.active {
+        display: flex;
+    }
+
+    .dropdown > a::after {
+        float: right;
+        transition: transform 0.3s;
+    }
+
+    .dropdown.active > a::after {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+        background-color: var(--color-bg-submenu);
+        flex-direction: column;
+        align-items: center;
+        transform: translateX(0%);
+        min-width: 0;
+        grid-template-columns: 1fr;
+    }
+
+    .dropdown-content li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-content li a {
+        width: 100%;
+        padding: 0.8rem;
+        text-align: center;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: flex;
+    }
+
+    .hero {
+        height: 400px;
+        padding: 1.5rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .destinos {
+        padding: 2rem 1rem;
+    }
+
+    .destinos h2 {
+        font-size: 2rem;
+    }
+
+    .grid-destinos {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-banner {
+        min-height: 150px;
+        padding: 0.5rem;
+    }
+
+    .footer-banner img {
+        max-height: 200px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .social-links a {
+        display: inline-block;
+        margin: 0.5rem;
+    }
+
+    .footer-language {
+        padding: 1.2rem 0 0.6rem 0;
+    }
+
+    .translate-widget .goog-te-combo {
+        padding: 12px 18px !important;
+        font-size: 1rem !important;
+        min-width: 160px !important;
+        padding-right: 40px !important;
+        background-size: 12px 7px !important;
+        background-position: right 14px center !important;
+        max-width: 280px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .header-title h1 {
+        font-size: 1.3rem;
+    }
+
+    .header-title p {
+        font-size: 0.8rem;
+    }
+
+    .hero {
+        height: 350px;
+    }
+
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+    }
+
+    .card-content {
+        padding: 1rem;
+    }
+
+    .card h3 {
+        font-size: 1.3rem;
+    }
+
+    .footer-banner {
+        min-height: 120px;
+    }
+
+    .footer-banner img {
+        max-height: 150px;
+    }
+
+    .footer-language {
+        padding: 1rem 0 0.4rem 0;
+    }
+
+    .translate-widget .goog-te-combo {
+        padding: 10px 14px !important;
+        font-size: 0.95rem !important;
+        min-width: 140px !important;
+        padding-right: 36px !important;
+        background-size: 10px 6px !important;
+        background-position: right 12px center !important;
+        max-width: 240px !important;
+    }
 }
