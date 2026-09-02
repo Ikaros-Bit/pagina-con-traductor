@@ -153,21 +153,40 @@
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Script para ocultar "Seleccionar idioma" y evitar flotamiento -->
     <script>
-        // Forzar que el idioma por defecto sea español (para ocultar "Seleccionar idioma")
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
+            // Función para forzar que el combo muestre "Español" como opción seleccionada
+            function fixTranslateCombo() {
                 var combo = document.querySelector('.goog-te-combo');
                 if (combo) {
-                    // Si el valor actual es vacío o "Seleccionar idioma", cambiarlo a español
+                    // Si el valor está vacío o es "Seleccionar idioma", cambiarlo a 'es'
                     if (combo.value === '' || combo.value === 'es') {
                         combo.value = 'es';
-                        // Disparar evento change para que Google Translate actualice
+                        // Disparar evento change para actualizar el widget
                         var event = new Event('change', { bubbles: true });
                         combo.dispatchEvent(event);
                     }
+                    // También cambiar el texto de la primera opción (a veces es "Seleccionar idioma")
+                    var options = combo.querySelectorAll('option');
+                    if (options.length > 0 && options[0].text === 'Seleccionar idioma') {
+                        options[0].text = 'Español';
+                    }
+                    return true;
                 }
-            }, 1000); // Esperar a que el widget se cargue
+                return false;
+            }
+
+            // Intentar varias veces porque el widget puede cargar después
+            var attempts = 0;
+            var maxAttempts = 10;
+            var interval = setInterval(function() {
+                attempts++;
+                if (fixTranslateCombo() || attempts >= maxAttempts) {
+                    clearInterval(interval);
+                }
+            }, 500);
         });
     </script>
     <!-- ========================================================= -->
