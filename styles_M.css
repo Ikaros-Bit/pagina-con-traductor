@@ -1,5 +1,4 @@
 * {
-    /* Reset y Variables */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,23 +6,18 @@
 }
 
 :root {
-    /* Modo Claro */
     --color-text-primary: #005c97;
     --color-text-secondary: #FFFFFF;
     --color-text-titulo: #798EAE;
     --color-text-link: #3498db;
-
     --color-bg-primary: #f9fafb;
     --color-bg-secondary: #ffffff;
     --color-bg-sidebar: linear-gradient(135deg, #005c97, #00365a);
     --color-bg-menu: #2c3e50;
     --color-bg-submenu: #314355;
-
     --color-border-hr: #E2E8F0;
-
     --color-hover-primary: #415569;
     --color-hover-secondary: #415569;
-
     --color-shadow: rgba(0, 0, 0, 0.05);
     --color-shadow-2: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -37,9 +31,7 @@ body {
     padding-top: 0 !important;
 }
 
-/* ------------------------------
-   HEADER ACTUALIZADO
------------------------------- */
+/* HEADER */
 .header-container {
     background: var(--color-bg-sidebar);
     color: var(--color-text-secondary);
@@ -100,9 +92,7 @@ body {
     transition: all 0.3s;
 }
 
-/* ------------------------------
-   NAVEGACIÓN
------------------------------- */
+/* NAVEGACIÓN */
 nav {
     background-color: var(--color-bg-menu);
     position: relative;
@@ -137,7 +127,6 @@ nav ul li a:hover {
     background-color: var(--color-hover-secondary);
 }
 
-/* SUBMENÚ HORIZONTAL */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -179,27 +168,22 @@ nav ul li a:hover {
     transform: translateY(-1px);
 }
 
-/* Mostrar submenú al hacer clic (para desktop) */
 .dropdown.active .dropdown-content {
     display: grid;
     animation: fadeIn 0.25s ease-in-out;
 }
 
-/* Animación suave */
 @keyframes fadeIn {
     from { opacity: 0; transform: translate(-50%, 10px); }
     to   { opacity: 1; transform: translate(-50%, 0); }
 }
 
-/* Indicador de submenú */
 .dropdown > a::after {
     content: " ▼";
     font-size: 0.7em;
 }
 
-/* ------------------------------
-   HERO
------------------------------- */
+/* HERO */
 .hero {
     height: 500px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://upload.wikimedia.org/wikipedia/commons/6/65/Departamento_de_Castro_Barros%2C_La_Rioja_55.jpg');
@@ -228,9 +212,6 @@ nav ul li a:hover {
     text-shadow: 2px 2px 4px rgba(0,0,0,.5);
 }
 
-/* ------------------------------
-   BOTONES
------------------------------- */
 .btn {
     background-color: var(--color-text-link);
     color: white;
@@ -248,9 +229,6 @@ nav ul li a:hover {
     background-color: #2980b9;
 }
 
-/* ------------------------------
-   DESTINOS
------------------------------- */
 .destinos {
     padding: 4rem 2rem;
     text-align: center;
@@ -312,9 +290,7 @@ nav ul li a:hover {
     text-align: justify;
 }
 
-/* ------------------------------
-   FOOTER ACTUALIZADO
------------------------------- */
+/* FOOTER */
 .footer-banner {
     text-align: center;
     display: flex;
@@ -380,7 +356,6 @@ footer {
     color: var(--color-text-link);
 }
 
-/* Redes sociales */
 .social-links {
     margin: 1rem 0;
 }
@@ -403,7 +378,6 @@ footer {
     transition: 0.3s ease;
 }
 
-/* Parte inferior */
 .footer-bottom {
     text-align: center;
     margin-top: 2rem;
