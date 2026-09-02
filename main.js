@@ -13,21 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Control de dropdowns
     dropdowns.forEach(dropdown => {
         const link = dropdown.querySelector('a');
         if (!link) return;
 
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            // cerrar los demás dropdowns
             dropdowns.forEach(d => d !== dropdown && d.classList.remove('active'));
-            // alternar el actual
             dropdown.classList.toggle('active');
         });
     });
 
-    // Cerrar menú en mobile al hacer click en un enlace que NO sea dropdown
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 768) {
@@ -41,14 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Cerrar dropdowns al hacer clic fuera
     document.addEventListener('click', (e) => {
         if (window.innerWidth > 768 && !e.target.closest('.dropdown')) {
             dropdowns.forEach(d => d.classList.remove('active'));
         }
     });
 
-    // Reset menú al cambiar de tamaño
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768) {
             mobileMenu?.classList.remove('active');
@@ -73,20 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!navMenu || !dropdown) return;
 
-                // Subir hasta el nav
                 navMenu.scrollIntoView({ behavior: 'smooth' });
 
-                // Abrir menú y submenú
                 navMenu.classList.add('active');
                 dropdown.classList.add('active');
                 if (mobileMenu && window.innerWidth <= 768) {
                     mobileMenu.classList.add('active');
                 }
 
-                // Si es "destinos" → solo abre el submenú
                 if (destino === "destinos") return;
 
-                // Buscar destino en dropdown
                 const destinoLink = Array.from(dropdown.querySelectorAll('.dropdown-content a'))
                     .find(a => a.textContent.trim() === destino);
 
@@ -122,15 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Iniciar carrusel automático para hero-carousel
         if (carousel.classList.contains('hero-carousel')) {
             startAutoSlide();
         }
 
-        // Ajustar al redimensionar
         window.addEventListener('resize', updateCarousel);
 
-        // Controles manuales del carrusel
         if (carousel.classList.contains('carousel')) {
             const prevBtn = carousel.querySelector('.carousel-btn.prev');
             const nextBtn = carousel.querySelector('.carousel-btn.next');
@@ -148,21 +135,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Botón siguiente
             nextBtn?.addEventListener('click', () => {
                 currentIndex = (currentIndex + 1) % slides.length;
                 updateCarousel();
                 updateIndicators(currentIndex);
             });
 
-            // Botón anterior
             prevBtn?.addEventListener('click', () => {
                 currentIndex = (currentIndex - 1 + slides.length) % slides.length;
                 updateCarousel();
                 updateIndicators(currentIndex);
             });
 
-            // Click en indicadores
             indicators.forEach((ind, i) => {
                 ind.addEventListener('click', () => {
                     currentIndex = i;
@@ -171,11 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
-            // Inicializar indicadores
             updateIndicators(currentIndex);
         }
 
-        // Inicializar
         updateCarousel();
     });
 });
