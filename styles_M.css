@@ -414,7 +414,7 @@ footer {
 }
 
 /* ==============================================================
-   WIDGET DE GOOGLE TRANSLATE (IGUAL QUE EN AMINGA)
+   GOOGLE TRANSLATE - ESTILOS IGUAL QUE EN AMINGA
    ============================================================== */
 
 .footer-language {
@@ -451,7 +451,7 @@ footer {
     opacity: 0 !important;
 }
 
-/* El combo de idioma (selector) - IGUAL QUE EN AMINGA */
+/* El combo de idioma (selector) - ESTILO COMPLETO COMO EN AMINGA */
 .translate-widget .goog-te-combo {
     background: rgba(255, 255, 255, 0.1) !important;
     color: #fff !important;
@@ -524,7 +524,7 @@ body {
     padding-top: 0 !important;
 }
 
-/* Responsive del traductor en móviles - IGUAL QUE EN AMINGA */
+/* Responsive del traductor en móviles */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -666,7 +666,6 @@ body {
         margin: 0.5rem;
     }
 
-    /* Ajustes del traductor en móvil */
     .footer-language {
         padding: 1.2rem 0 0.6rem 0;
     }
